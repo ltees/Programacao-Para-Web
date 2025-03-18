@@ -1,14 +1,16 @@
 function transporMatriz(A) {
-    console.log("Matriz Original:");
-    A.forEach(linha => console.log(linha.join(" ")));
+    for(let i = 0; i < A.length; i++){
+        let linha = "";
+        for(let j = 0; j < A[0].length; j++){
+            linha += A[i][j] + "\t";
+        }
+        console.log(linha);
+    }
 
-    let transposta = A[0].map((_, colIndex) => A.map(row => row[colIndex]));
-
-    console.log("\nMatriz Transposta:");
-    transposta.forEach(linha => console.log(linha.join(" ")));
+    console.log("\nTransposta\n");
 }
 
-const matriz = [
+let matriz = [
     [1, 2],
     [3, 4],
     [5, 6]
