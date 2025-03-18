@@ -1,11 +1,21 @@
-let n;
-
 function VerificarNumeroPrimo(n){
-    if(n < 2) return false;
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i === 0) return false;
+    if(n < 2){
+        return false;
     }
-    return true;
+
+    if(n <= 3){
+        return true;
+    }
+    
+    if(n % 2 == 0){
+        return false;
+    }
+
+    for(let i = 3; i < n; i += 2){
+        if(n % i ==0){
+            return false
+        }
+    }
 }
 
 console.log(verificarNumeroPrimo(0));       
@@ -16,6 +26,6 @@ console.log(verificarNumeroPrimo(7));
 console.log(verificarNumeroPrimo(83));      
 console.log(verificarNumeroPrimo(100));     
 console.log(verificarNumeroPrimo(991));     
-console.log(verificarNumeroPrimo(104729));  
+console.log(verificarNumeroPrimo(104729));                                                           
 console.log(verificarNumeroPrimo(14348907));
 
