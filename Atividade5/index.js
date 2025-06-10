@@ -1,5 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const db  = require('./db');
 const app = express();
 
 app.engine('html', mustacheExpress());
@@ -7,11 +8,10 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.urlencoded({extended: true}));
 
-const agendamentoController = require('./controllers/agendamentoController');
+const agendamentoRouter = require('./routers/agendamentoRouter');
+app.use('/', agendamentoRouter);
 
-app.get('/', agendamentoController.getIndexView);
-
-app.post('/agendar_consulta', agendamentoController.postAgendarConsulta);
+db.sync();
 
 const PORT = 8080;
 app.listen(PORT, ()=>{
